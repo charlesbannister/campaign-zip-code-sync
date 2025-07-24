@@ -5,10 +5,10 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Python Debugger: zip-sync/__main__.py",
+      "name": "Python Debugger: zip_sync/__main__.py",
       "type": "debugpy",
       "request": "launch",
-      "program": "zip-sync/__main__.py",
+      "program": "zip_sync/__main__.py",
       "console": "integratedTerminal"
     }
   ]
