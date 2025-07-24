@@ -49,3 +49,11 @@ https://www.elocal.com/api/call_category_price_list/149.json?api_key=c13b178aca3
    ```sh
    poetry install
    ```
+
+## Running Tests
+
+To run the tests, use:
+
+```
+pytest
+```
