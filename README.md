@@ -1,29 +1,32 @@
-Core Steps
-Data Retrieval: Get zip code data from an API endpoint.
+# Campaign Zip Code Sync
 
-The API updates every 15 minutes.
+## Core Steps
 
-Data Filtering: Select zip codes where max_call_price is greater than 20.
+1. **Data Retrieval:** Get zip code data from an API endpoint.
+   - The API updates every 15 minutes.
+2. **Data Filtering:** Select zip codes where `max_call_price` is greater than 20.
+3. **Campaign Targeting:** Only target enabled Google Ads campaigns.
+4. **Location Sync:**
+   - Remove zip codes from campaigns if they're not in the latest data.
+   - Add new zip codes from the data to campaigns.
+5. **Reporting:** Export all changes to a Google Sheet with a timestamp after each run.
+6. **Notifications:** Send Slack notifications to the admin for any problems.
 
-Campaign Targeting: Only target enabled Google Ads campaigns.
+---
 
-Location Sync:
+## Notes/Specifics
 
-Remove zip codes from campaigns if they're not in the latest data.
+- **Execution Frequency:** Every 15 minutes.
 
-Add new zip codes from the data to campaigns.
+### Endpoint
 
-Reporting: Export all changes to a Google Sheet with a timestamp after each run.
-
-Notifications: Send Slack notifications to the admin for any problems.
-
-Notes/Specifics
-Execution Frequency: Every 15 minutes.
-
-Endpoint:
+```
 https://www.elocal.com/api/call_category_price_list/149.json?api_key=c13b178aca3cd7d642b6b1e4fe22f1bb
+```
 
-## Python Setup:
+---
+
+## Python Setup
 
 1. Create a virtual environment:
    ```sh
