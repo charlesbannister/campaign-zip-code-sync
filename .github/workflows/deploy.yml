@@ -39,5 +39,7 @@ jobs:
           script: |
             cd /home/charles/projects/campaign-zip-code-sync
             git pull origin main
+            python3 -m venv .venv
             source .venv/bin/activate
+            pip install poetry
             poetry install
