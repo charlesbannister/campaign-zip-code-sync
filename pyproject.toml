@@ -5,6 +5,8 @@ description = ""
 authors = ["Charles Bannister <cbannister@godaddy.com>"]
 readme = "README.md"
 
+packages = [{ include = "zip_sync" }]
+
 [tool.poetry.dependencies]
 python = "^3.12"
 pytest = "^8.4.1"
