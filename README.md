@@ -8,8 +8,8 @@
 3. **Campaign Targeting:** Only target enabled Google Ads campaigns.
 4. **Location Sync:**
    - Remove zip codes from campaigns if they're not in the latest data.
-   - Add new zip codes from the data to campaigns.
-5. **Reporting:** Export all changes to a Google Sheet with a timestamp after each run.
+   - Add new zip codes from the data to campaigns (get the location ID based on the zip code first)
+5. **Reporting:** Log runs to a new slack channel (muted)
 6. **Notifications:** Send Slack notifications to the admin for any problems.
 
 ---

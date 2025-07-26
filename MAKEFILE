@@ -1,0 +1,2 @@
+ssh:
+	ssh charles@134.199.202.211 -i ~/.ssh/campaign_zip_sync_rsa 

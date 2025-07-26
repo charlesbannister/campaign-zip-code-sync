@@ -1,0 +1,43 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Create virtual environment and install Poetry
+        run: |
+          python3 -m venv .venv
+          source .venv/bin/activate
+          pip install poetry
+          poetry install
+
+      - name: Run tests with Poetry
+        run: |
+          source .venv/bin/activate
+          poetry run pytest
+
+      - name: Deploy to server via SSH
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: 134.199.202.211
+          username: charles
+          key: ${{ secrets.SSH_PRIVATE_KEY_CAMPAIGN_ZIP_CODE_SYNC }}
+          script: |
+            cd /home/charles/projects/campaign-zip-code-sync
+            git pull origin main
+            source .venv/bin/activate
+            poetry install
