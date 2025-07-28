@@ -15,3 +15,11 @@ def _get_config_dir_path() -> str:
 def get_env_file_path() -> str:
     """Return the path to the .env file."""
     return os.path.join(_get_config_dir_path(), ".env")
+
+def _get_secrets_dir_path() -> str:
+    """Return the path to the secrets directory."""
+    return os.path.abspath(os.path.join(_get_project_root_path(), "secrets"))
+
+def get_google_ads_api_yaml_path() -> str:
+    """Return the path to the google-ads-api.yaml file."""
+    return os.path.join(_get_secrets_dir_path(), "google-ads-api.yaml")

@@ -1,4 +1,4 @@
-from slack.slack_notifier import SlackNotifier
+from zip_sync.slack.slack_notifier import SlackNotifier
 import os
 
 def send_admin_slack(message: str):
