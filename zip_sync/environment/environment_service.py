@@ -16,3 +16,7 @@ class EnvironmentService(object):
         if account_id is None:
             raise ValueError("GOOGLE_ADS_ACCOUNT_ID is not set")
         return account_id
+    
+    def get_test_mode(self):
+        is_in_test_mode = os.getenv("TEST_MODE", "false")
+        return is_in_test_mode.lower() == "true"
