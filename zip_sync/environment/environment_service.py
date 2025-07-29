@@ -17,6 +17,10 @@ class EnvironmentService(object):
             raise ValueError("GOOGLE_ADS_ACCOUNT_ID is not set")
         return account_id
     
-    def get_test_mode(self):
-        is_in_test_mode = os.getenv("TEST_MODE", "false")
-        return is_in_test_mode.lower() == "true"
+    def get_chunk_size(self) -> int:
+        chunk_size = os.getenv("CHUNK_SIZE", "10")
+        return int(chunk_size)
+    
+    def api_active(self) -> bool:
+        api_active = os.getenv("API_ACTIVE", "true")
+        return api_active.lower() == "true"
