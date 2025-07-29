@@ -21,6 +21,10 @@ class EnvironmentService(object):
         chunk_size = os.getenv("CHUNK_SIZE", "10")
         return int(chunk_size)
     
-    def api_active(self) -> bool:
+    def get_api_active(self) -> bool:
         api_active = os.getenv("API_ACTIVE", "true")
         return api_active.lower() == "true"
+    
+    def get_test_mode(self) -> bool:
+        test_mode = os.getenv("TEST_MODE", "false")
+        return test_mode.lower() == "true"

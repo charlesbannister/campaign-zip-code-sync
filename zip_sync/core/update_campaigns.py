@@ -9,7 +9,7 @@ from zip_sync.environment.environment_service import EnvironmentService
 
 
 def update_campaigns(api_criteria_ids: list[str]) -> None:
-    if not EnvironmentService().api_active():
+    if not EnvironmentService().get_api_active():
         print("API is not active. Skipping campaign zip code sync. See API_ACTIVE environment variable.")
         return
     
