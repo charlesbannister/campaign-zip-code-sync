@@ -28,3 +28,9 @@ class EnvironmentService(object):
     def get_test_mode(self) -> bool:
         test_mode = os.getenv("TEST_MODE", "false")
         return test_mode.lower() == "true"
+    
+    def get_google_sheet_url(self) -> str:
+        google_sheet_url = os.getenv("GOOGLE_SHEET_URL", None)
+        if google_sheet_url is None:
+            raise ValueError("GOOGLE_SHEET_URL is not set")
+        return google_sheet_url

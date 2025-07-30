@@ -23,3 +23,9 @@ def _get_secrets_dir_path() -> str:
 def get_google_ads_api_yaml_path() -> str:
     """Return the path to the google-ads-api.yaml file."""
     return os.path.join(_get_secrets_dir_path(), "google-ads-api.yaml")
+
+def get_google_credentials_path() -> str:
+    """Return the path to the google credentials file.
+    The same file handles both the Google Ads API and the Google Sheets API.
+    """
+    return os.path.join(_get_secrets_dir_path(), "google-credentials.json")
