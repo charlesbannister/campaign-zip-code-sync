@@ -2,7 +2,7 @@ import os
 
 from dotenv import load_dotenv
 
-from environment.folder_paths import get_env_file_path
+from zip_sync.environment.folder_paths import get_env_file_path
 
 
 def load_environment_variables() -> None:
