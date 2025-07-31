@@ -6,6 +6,7 @@ from zip_sync.core.update_google_sheets import update_google_sheets
 from zip_sync.environment.load_environment_variables import \
     load_environment_variables
 from zip_sync.slack.send_admin_slack import send_admin_slack
+from zip_sync.slack.send_alert_slack import send_alert_slack
 from zip_sync.zip_code_service import get_zip_codes
 
 
@@ -19,6 +20,7 @@ def main():
         update_campaigns(criteria_ids)
     except Exception as e:
         send_admin_slack(f"Error updating campaigns with zip codes: {e}\nFull traceback:\n{traceback.format_exc()}")
+        send_alert_slack(f"Error updating campaigns with zip codes: {e}\nFull traceback:\n{traceback.format_exc()}")
         raise e
     finally:
         send_admin_slack("Finished campaign zip code sync")

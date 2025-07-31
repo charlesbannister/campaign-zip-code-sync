@@ -27,7 +27,6 @@ class GetReport:
         for batch in stream:
             fields = batch.field_mask.paths
             for row in batch.results:
-                time.sleep(1)
                 results.append(StreamHandler().row_to_dict(row, fields))
         return results
     

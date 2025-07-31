@@ -1,5 +1,6 @@
 /**
  * Campaign Location Criteria Manager
+ * @author Charles Bannister (shabba.io)
  * Reads campaign IDs from Google Sheet tabs and syncs location criteria to match exactly
  * Version 1.8.0
  */
@@ -9,7 +10,11 @@
 // Geographic View Query Builder: https://developers.google.com/google-ads/api/fields/v20/geographic_view_query_builder
 
 // CONFIGURATION
-const SPREADSHEET_URL = 'https://docs.google.com/spreadsheets/d/1k3uOM-Qeha1Ma2b13a_PaLRs0eXPJeIxptI7PVvy8-k/edit?gid=1784049670#gid=1784049670';
+// Development Spreadsheet
+// const SPREADSHEET_URL = 'https://docs.google.com/spreadsheets/d/1k3uOM-Qeha1Ma2b13a_PaLRs0eXPJeIxptI7PVvy8-k/edit?gid=1784049670#gid=1784049670';
+
+// Production Spreadsheet
+const SPREADSHEET_URL = 'https://docs.google.com/spreadsheets/d/1NKpAWeSP9Fkz_H-nSRW2_Zhelk07jt4Zkb_tWUFO9L8/edit?gid=1660336023#gid=1660336023';
 // Google Sheet containing campaign tabs with location criteria to add/remove
 
 const DEBUG_MODE = true;
@@ -334,7 +339,7 @@ function removeLocationCriteriaFromCampaign(campaign, locationIdsToRemove) {
       try {
         location.remove();
         removedCount++;
-        debugLog(`Removed location: ${locationId}`);
+        // debugLog(`Removed location: ${locationId}`);
       } catch (error) {
         failedCount++;
         debugLog(`Failed to remove location ID "${locationId}": ${error.message}`);

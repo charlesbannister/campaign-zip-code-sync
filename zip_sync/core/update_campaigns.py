@@ -11,13 +11,12 @@ from zip_sync.slack.send_admin_slack import send_admin_slack
 
 def update_campaigns(api_criteria_ids: list[str]) -> None:
     if not EnvironmentService().get_api_active():
+        print("API is not active. Skipping campaign zip code sync. See API_ACTIVE environment variable.")
         send_admin_slack("API is not active. Skipping campaign zip code sync. See API_ACTIVE environment variable.")
         return
     
     campaign_ids = _get_campaign_ids()
-    time.sleep(10)
     campaign_criterion_ids_map = _get_campaign_criterion_ids_map(campaign_ids)
-    time.sleep(10)
     _sync_campaign_criteria(campaign_ids, api_criteria_ids, campaign_criterion_ids_map)
     
 def _get_campaign_ids() -> list[str]:
