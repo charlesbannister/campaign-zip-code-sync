@@ -25,6 +25,7 @@ class CampaignCriterionIdFetcher:
     def get_campaign_location_criteria_for_campaigns(self, campaign_ids: list[str]) -> dict[str, dict[str, str]]:
         """
         Retrieves the location (geo-target) criteria for a list of campaigns.
+        These are the locations which are being targeted by the campaigns.
 
         Args:
             campaign_ids (list[str]): A list of campaign IDs for which to fetch criteria.
@@ -57,7 +58,7 @@ class CampaignCriterionIdFetcher:
             "campaign_criterion.resource_name",
             "campaign_criterion.location.geo_target_constant"
         ]
-        campaign_criteria_map: dict[str, dict[str, str]] = {cid: {} for cid in campaign_ids}
+        campaign_criteria_map: dict[str, dict[str, str]] = {str(cid): {} for cid in campaign_ids}
 
         logger.info(f"Fetching location criteria for {len(campaign_ids)} campaigns.")
         try:

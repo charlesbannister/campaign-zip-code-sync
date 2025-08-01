@@ -37,6 +37,7 @@ class CampaignFetcher:
                 campaign
             WHERE
                 campaign.status = 'ENABLED'
+                and campaign.name LIKE '%[Appliance]%'
             ORDER BY
                 campaign.id
         """

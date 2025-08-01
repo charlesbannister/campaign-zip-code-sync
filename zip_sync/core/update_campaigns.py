@@ -67,11 +67,11 @@ def _apply_campaign_criteria_changes(campaign_criterion_mutator, campaign_id: st
     if criteria_to_add:
         for chunk in chunk_list(criteria_to_add, chunk_size):
             campaign_criterion_mutator.add_location_criteria_to_campaign(campaign_id, chunk)
-            time.sleep(5)
+            time.sleep(1)
     if resource_names_to_remove:
         for chunk in chunk_list(resource_names_to_remove, chunk_size):
             campaign_criterion_mutator.remove_location_criteria_from_campaign(campaign_id, chunk)
-            time.sleep(5)
+            time.sleep(1)
 
 
 def _sync_campaign_criteria(campaign_ids: list[str], api_criteria_ids: list[str], campaign_criterion_ids_map: dict[str, dict[str, str]]) -> None:
@@ -83,7 +83,7 @@ def _sync_campaign_criteria(campaign_ids: list[str], api_criteria_ids: list[str]
     campaign_criterion_mutator = CampaignCriterionMutator(google_ads_client, google_ads_account_id)
 
     for campaign_id in campaign_ids:
-        existing_criteria = campaign_criterion_ids_map.get(campaign_id, {})
+        existing_criteria = campaign_criterion_ids_map.get(str(campaign_id), {})
         existing_criteria_ids = set(existing_criteria.keys())
 
         criteria_to_add = _get_criteria_to_add(api_criteria_ids, existing_criteria_ids)
